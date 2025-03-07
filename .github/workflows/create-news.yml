@@ -1,7 +1,9 @@
 name: Create Lab News
 
 on:
-  workflow_dispatch
+  issues:
+    types: [opened, edited]
+  workflow_dispatch:
 
 permissions:
   contents: write
