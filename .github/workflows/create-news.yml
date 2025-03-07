@@ -1,6 +1,7 @@
 name: Create Lab News
 
 on:
+  workflow_dispatch
   issues:
     types: [opened, edited]
 
