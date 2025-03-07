@@ -16,6 +16,9 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        uses: denoland/setup-deno@v1
+        with:
+          deno-version: v1.x
 
       - name: Parse Issue
         id: parse-issue
@@ -32,9 +35,6 @@ jobs:
 
       - name: Add announcement
         id: output-issue
-        uses: denoland/setup-deno@v1
-        with:
-          deno-version: v1.x
         run: echo ${{ toJson(steps.parse-issue.outputs.json) }} | deno run -A scripts/create-hidive-news.ts - >> /tmp/pr-body.md
 
       - name: Extract content
